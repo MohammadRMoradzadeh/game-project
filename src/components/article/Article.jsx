@@ -1,34 +1,44 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ArticleCart from "../articleCart/ArticleCart";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 function Article() {
-  let articles = [
-    {
-      category: ["اخبار", "ورزشی"],
-      des: "بازی NBA 2K 2023 رکورد پرفروش ترین بازی ورزشی را شکست.",
-      Image: "image/nba.png",
-    },
-    {
-      category: ["بازی های جدید ", "اکشن"],
-      des: "نسخه جدید اساسینس کرید با عنوان (میراژ) منتشر شد.",
-      Image: "image/assasine.png",
-    },
-    {
-      category: ["موسیقی"],
-      des: "موسیقی بازی The Last of Us رکورد دار بیشترین دانلود.",
-      Image: "image/the-last.png",
-    },
-  ];
+  gsap.registerPlugin(ScrollTrigger);
+  useEffect(() => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".article-parent",
+      },
+    });
+
+    tl.fromTo(
+      ".article-title",
+      {
+        yPercent: -50,
+        opacity: 0,
+      },
+      { yPercent: 0, opacity: 1, duration: 1 }
+    ).fromTo(
+        ".article-image",
+        {
+          xPercent: 50,
+          opacity: 0,
+        },
+        { xPercent: 0, opacity: 1, duration: 1}
+      ,"-=1");
+    
+  }, []);
   return (
     <>
-      <div className="flex flex-col mt-20 w-full px-6 h-auto ">
-        <div className="flex justify-center items-center text-2xl ">
-          <p className="text-white text-Pinar-SemiBold pb-4 border-b-2">
+      <div className="flex flex-col mt-20 w-full px-6 h-auto article-parent">
+        <div className="flex justify-center items-center text-2xl article-title">
+          <p className="text-white text-Pinar-SemiBold pb-4 border-b-2 ">
             مقالات جدید
           </p>
         </div>
         <div className="flex flex-row justify-center gap-x-5 mt-14">
-          <div className="w-[36rem] h-[45rem] relative">
+          <div className="w-[36rem] h-[45rem] relative article-image">
             <img
               src="image/sl4.png"
               className="w-full h-full absolute -z-10"
@@ -65,9 +75,23 @@ function Article() {
             </div>
           </div>
           <div className="flex flex-col gap-y-6">
-            <ArticleCart des="بازی NBA 2K 2023 رکورد پرفروش ترین بازی ورزشی را شکست." Image="image/nba.png" cat1="ورزشی" cat2="اخبار"/>
-            <ArticleCart des="نسخه جدید اساسینس کرید با عنوان (میراژ) منتشر شد." Image="image/assasine.png" cat1="اکشن" cat2="بازی های جدید "/>
-            <ArticleCart des="موسیقی بازی The Last of Us رکورد دار بیشترین دانلود." Image= "image/the-last.png" cat1="موسیقی"/>
+            <ArticleCart
+              des="بازی NBA 2K 2023 رکورد پرفروش ترین بازی ورزشی را شکست."
+              Image="image/nba.png"
+              cat1="ورزشی"
+              cat2="اخبار"
+            />
+            <ArticleCart
+              des="نسخه جدید اساسینس کرید با عنوان (میراژ) منتشر شد."
+              Image="image/assasine.png"
+              cat1="اکشن"
+              cat2="بازی های جدید "
+            />
+            <ArticleCart
+              des="موسیقی بازی The Last of Us رکورد دار بیشترین دانلود."
+              Image="image/the-last.png"
+              cat1="موسیقی"
+            />
 
             {/* <ArticleCart />
             <ArticleCart />

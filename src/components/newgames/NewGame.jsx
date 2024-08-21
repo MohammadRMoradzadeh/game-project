@@ -19,7 +19,10 @@ function NewGame() {
         xPercent: 200,
       },
       { xPercent: 0, duration: 1 }
-    );
+    ).fromTo(".best-sellers",{
+      xPercent: -200,
+    },
+    { xPercent: 0, duration: 1 },"-=1");
 
     
   }, []);
@@ -33,7 +36,7 @@ function NewGame() {
               جدیدترین بازی های فروشگاه
             </p>
           </div>
-          <div className="w-56 h-16 bg-[#FFFFFF0F] rounded-2xl px-2">
+          <div className="w-56 h-16 bg-[#FFFFFF0F] rounded-2xl px-2 best-sellers">
             <select className="w-full h-full bg-transparent border-none outline-none text-white text-Pinar-Medium rounded-2xl ">
               <option className="text-black" value="bestSellers" selected>
                 پر فروش ترین ها

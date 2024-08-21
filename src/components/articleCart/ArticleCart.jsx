@@ -1,11 +1,30 @@
 import React, { useEffect } from "react";
 import { GoDotFill } from "react-icons/go";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 function ArticleCart({ cat1, cat2, des, Image }) {
+    gsap.registerPlugin(ScrollTrigger);
+    useEffect(() => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".article-parent",
+        },
+      });
+  
+      tl.fromTo(
+        ".article-cart",
+        {
+          xPercent: -50,
+          opacity: 0,
+        },
+        { xPercent: 0, opacity: 1, duration: 1 ,stagger:0.25}
+      );
+    }, []);
  
   return (
     <>
-      <div className="w-[37.5rem] h-[14rem] bg-[#242731] rounded-3xl flex flex-row">
+      <div className="w-[37.5rem] h-[14rem] bg-[#242731] rounded-3xl flex flex-row article-cart">
         <div className="w-[260px] h-[200px] m-3">
           <img src={Image} className="h-full" alt="" />
         </div>

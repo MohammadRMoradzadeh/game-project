@@ -3,6 +3,7 @@ import Header from "./components/header/Header";
 import NewGame from "./components/newgames/NewGame";
 import Slider from "./components/slider/Slider";
 
+
 function App() {
   return (
     <>
