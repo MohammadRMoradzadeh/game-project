@@ -25,16 +25,18 @@ export default function Slider() {
   ];
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 7000);
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+      
+      
+  //   }, 7000);
+  //   console.log(currentIndex);
+  //   return () => clearInterval(interval);
+  // }, []);
 
-    return () => clearInterval(interval); // پاک کردن تایمر هنگامUnmount
-  }, []);
-
   useEffect(() => {
-    console.log("ok");
+    
     gsap.fromTo(
       ".image-slide",
       { xPercent: 200 },
